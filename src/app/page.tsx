@@ -2,7 +2,7 @@ import prisma from "@/lib/db";
 
 export default async function Home() {
   try {
-    const users: { id: string; name: string }[] = await prisma.user.findMany();
+    const users: { id: number; name: string }[] = await prisma.user.findMany();
     return (
       <div>
         <h1>Home Docker prisma </h1>
