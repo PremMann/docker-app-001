@@ -7,7 +7,7 @@ export default async function Home() {
     const users = await prisma.user.findMany();
     return (
       <div>
-        <h1>Home Docker Prisma</h1>
+        <h1>Home User Lists</h1>
         {users.map((user: { id: number; name: string; createdAt: Date }) => (
           <div key={user.id}>
             <h2>{user.name}</h2>
