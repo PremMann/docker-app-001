@@ -1,5 +1,6 @@
 // filepath: /Users/premmann/Next/docker/docker-app-001/src/app/page.tsx
 import prisma from "@/lib/db";
+import FormCreate from "@/components/form";
 
 export default async function Home() {
   try {
@@ -13,6 +14,7 @@ export default async function Home() {
             <p>Created At: {new Date(user.createdAt).toLocaleString()}</p>
           </div>
         ))}
+        <FormCreate />
       </div>
     );
   } catch (error) {
