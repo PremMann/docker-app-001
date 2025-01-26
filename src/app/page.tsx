@@ -1,18 +1,18 @@
+// filepath: /Users/premmann/Next/docker/docker-app-001/src/app/page.tsx
 import prisma from "@/lib/db";
 
 export default async function Home() {
   try {
-    const users: { id: number; name: string }[] = await prisma.user.findMany();
+    const users = await prisma.user.findMany();
     return (
       <div>
-        <h1>Home Docker prisma </h1>
-        {
-          users.map((user) => (
-            <div key={user.id}>
-              <h2>{user.name}</h2>
-            </div>
-          ))
-        }
+        <h1>Home Docker Prisma</h1>
+        {users.map((user: { id: number; name: string; createdAt: Date }) => (
+          <div key={user.id}>
+            <h2>{user.name}</h2>
+            <p>Created At: {new Date(user.createdAt).toLocaleString()}</p>
+          </div>
+        ))}
       </div>
     );
   } catch (error) {
@@ -20,6 +20,7 @@ export default async function Home() {
     return (
       <div>
         <h1>Error fetching users</h1>
+        <p>{(error as Error).message}</p>
       </div>
     );
   }
