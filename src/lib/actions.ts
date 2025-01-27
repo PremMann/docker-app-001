@@ -12,3 +12,4 @@ export async function insert(formData: FormData) {
 
     revalidatePath("/posts");
 }
+
