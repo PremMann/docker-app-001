@@ -8,10 +8,11 @@ export default async function Home() {
     return (
       <div>
         <h1>Home User Lists</h1>
-        {users.map((user: { id: number; name: string; createdAt: Date }) => (
+        {users.map((user: { id: number; name: string; createdAt: Date, email: string }) => (
           <div key={user.id}>
             <h2>{user.name}</h2>
-            <p>Created At: {new Date(user.createdAt).toLocaleString()}</p>
+            <p>{user.email}</p>
+            <p>Created At: {user.createdAt ? new Date(user.createdAt).toLocaleString() : "N/A"}</p>
           </div>
         ))}
         <FormCreate />
